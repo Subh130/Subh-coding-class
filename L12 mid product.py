@@ -8,7 +8,7 @@ numLen = 0
 #Iterate the loop
 while t>0:
     numLen = numLen+1
-    t = int(numLen/2)
+    t = int(t/10)
 
 if numLen >= 4:
     numLen = int(numLen / 2)
