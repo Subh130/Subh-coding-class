@@ -24,7 +24,7 @@ def rental_car_cost(days):
         return 40*days 
     
 #Define an function trip_cost with argument day, money and city
-def trip_cost(days, money, city):
+def trip_cost(city, days, money):
     return rental_car_cost(days) + hotel_cost(days) + plane_ride_cost(city) + money
 
 print("cost of car rental: ", rental_car_cost(6))
