@@ -9,4 +9,4 @@ print()
 print("intersection of two said sets:")
 setz = setx.intersection(sety)
 
-print(setz)
+print(setz) 
