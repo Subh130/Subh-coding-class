@@ -6,6 +6,7 @@ white = (255,255,255)
 clock = pygame.time.Clock()
 
 #creating the display surface object
+display_surface = pygame.display.set_mode((500, 500))
 #of specific dimention..e(X, Y)
 pygame.display.set_caption("Image")
 image = pygame.image.load("download.JFIF")
@@ -22,7 +23,7 @@ DEFAULT_IMAGE_POSITION = (150, 150)
 #infinite loop
 while True:
     display_surface.fill(white)
-    display_surace.bilt(image, DEFAULT_IMAGE_POSITION)
+    display_surface.blit(image, DEFAULT_IMAGE_POSITION)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
