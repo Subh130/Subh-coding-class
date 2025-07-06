@@ -37,18 +37,18 @@ def main():
         y = min(max(0,y), screen_height - spite_height)
 
         #change color based on bouandry contact
-        if x == 0: current_color = ["blue"]
-        elif x == screen_width - spite_width: current_color = ["yellow"]
-        elif y == 0: current_color = ["red"]
-        elif y == screen_height - spite_height: current_color = ["green"]
+        if x == 0: current_color = colors["blue"]
+        elif x == screen_width - spite_width: current_color = colors["yellow"]
+        elif y == 0: current_color = colors["red"]
+        elif y == screen_height - spite_height: current_color = colors["green"]
         else:
-            current_color = ["white"]
+            current_color = colors["white"]
 
         screen.fill((0,0,0))
         pygame.draw.rect(screen, current_color,
                          (x,y, spite_width, spite_height))
         pygame.display.flip()
-        clock.tick()
+        clock.tick(60)
 
     pygame.quit()
 
