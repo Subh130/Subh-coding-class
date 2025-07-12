@@ -10,15 +10,15 @@ BACKGROUND_COLOR_CHANGE_EVENT = pygame.USEREVENT + 2
 
 #define basic color using pygame.color
 #Background colors
-BLUE = pygame.color("blue")
-LIGHTBLUE = pygame.color("lightblue")
-DARKBLUE = pygame.color("darkblue")
+BLUE = pygame.Color("blue")
+LIGHTBLUE = pygame.Color("lightblue")
+DARKBLUE = pygame.Color("darkblue")
 
 #sprite colors
-YELLOW = pygame.color("yellow")
-MAGENTA = pygame.color("magenta")
-ORANGE = pygame.color("orange")
-WHITE = pygame.color("white")
+YELLOW = pygame.Color("yellow")
+MAGENTA = pygame.Color("magenta")
+ORANGE = pygame.Color("orange")
+WHITE = pygame.Color("white")
 
 #sprite class representing the moiving object
 class Sprite(pygame.sprite.Sprite):
@@ -51,7 +51,7 @@ class Sprite(pygame.sprite.Sprite):
 
         #check for collission with top or bottom bouandaries and reverse direction
         if self.rect.top <= 0 or self.rect.bottom >= 400:
-            self.velocity [0] = -self.velocity[0]
+            self.velocity [1] = -self.velocity[1]
             bouantry_hit = True
         
         #if a bouandry was hit, post events to change color
@@ -61,8 +61,12 @@ class Sprite(pygame.sprite.Sprite):
 
     #method to change the sprites color 
     def change_color(self):
-        global bg_color 
-        bg_color = random.choice([BLUE,LIGHTBLUE,DARKBLUE])
+        self.image.fill(random.choice([YELLOW,MAGENTA,ORANGE,WHITE]))
+
+#function to change background color 
+def change_background_color():
+    global bg_color
+    bg_color = random.choice([BLUE, LIGHTBLUE, DARKBLUE ])
 
 #create a group to hold the sprite
 all_sprite_list = pygame.sprite.Group()
@@ -100,7 +104,7 @@ while not exit:
 
     #event loop handling
     for event in pygame.event.get():
-        
+
         #if the windows close button is clicked exit the game
         if event.type == pygame.QUIT:
             exit = True
@@ -111,3 +115,21 @@ while not exit:
 
         elif event.type  == BACKGROUND_COLOR_CHANGE_EVENT:
             change_background_color()
+
+    #update all sprites
+    all_sprite_list.update()
+
+    #fill the screen
+    screen.fill(bg_color)
+
+    #draw all sprites to the screen
+    all_sprite_list.draw(screen)
+
+    #Refresh the display
+    pygame.display.flip()
+
+    #limit the framerate to 240 fps
+    clock.tick(240)
+
+#unitialize all pygame modules and close the window
+pygame.quit()
