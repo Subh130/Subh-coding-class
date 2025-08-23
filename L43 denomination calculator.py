@@ -11,12 +11,12 @@ window.geometry("600x400")
 #adding images and labels in the main window
 upload = Image.open("app-image.jpeg")
 
-upload =  upload.resize(300, 300) #resize the image using resize method
+upload =  upload.resize((300, 300)) #resize the image using resize method
 image = ImageTk.PhotoImage(upload)
 label = Label(window, image=image, bg= "light blue")
 label.place(x=120, y=20)
 
-label1 = label(window,
+label1 = Label(window,
                text= "hello, Welcome to denomination counter application.",
                bg= "aqua")
 
